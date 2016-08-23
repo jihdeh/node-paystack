@@ -12,4 +12,4 @@ function Paystack(key) {
   var BEARER_SECRET = Object.create({}, { enumerable: true, secret: { value: key } });
   // let 
 }
-exports.default = paystack;
+exports.default = Paystack;
