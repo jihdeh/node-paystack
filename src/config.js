@@ -8,5 +8,5 @@ const BEARER_SECRET = Object.create({}, {enumerable: true, secret: {value: key} 
 // let 
 
 }
-export default paystack;
+export default Paystack;
 
