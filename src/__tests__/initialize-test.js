@@ -16,7 +16,7 @@ describe("Initialize paystack transaction", () => {
       amount: 500,
       email: "jide.b.tade@gmail.com"
     }
-    const response = callPaystack.transaction().verify();
+    const response = callPaystack.transaction().initialize(initializeData).verify();
     done();
   });
 })
