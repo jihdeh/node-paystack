@@ -5,21 +5,31 @@ axios.defaults.baseURL = "https://api.paystack.co/";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 
-export default async function makeRequests(secret, objectPackage) {
-  try {
-    const response = await axios({
+export default async function makeRequests(secret, objectPackage, state) {
+  let requestPayload = {
+    headers: {
+      "Authorization": secret
+    }
+  }
+  if (state === "initialize") {
+    requestPayload = Object.assign(requestPayload, {
       method: "post",
-      url: "transaction/initialize",
-      headers: {
-        "Authorization": secret
-      },
+      url: "trasaction/initialize",
       data: {
         "reference": shortid.generate(),
         "amount": objectPackage.amount,
         "email": objectPackage.email
       }
-    });
-    console.log(response, "-------")
+    })
+  } else if (state === "verify") {
+    requestPayload = Object.assign(requestPayload, {
+      method: "get",
+      url: `trasaction/verify/${objectPackage.reference}`
+    })
+  }
+  try {
+    console.log(requestPayload)
+    const response = await axios(requestPayload);
     return response;
   } catch (error) {
     // throw error;

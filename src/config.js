@@ -1,4 +1,5 @@
 import request from "./requests";
+import {get} from "lodash";
 let storeSecret;
 function Paystack(key) {
   storeSecret = key;
@@ -9,14 +10,21 @@ function Paystack(key) {
 Paystack.prototype.transaction = function(first_argument) {
   return {
     initialize: async function(initArgs) {
-      console.log(initArgs, "£££££££");
-      const response = await request(storeSecret, initArgs);
-      this.init = true;
+      const response = await request(storeSecret, initArgs, "initialize");
+      this.init = response.data;
       return this;
     },
     
-    verify: function() {
-      this.verfied = "no";
+    verify: async function(reference) {
+      if(this.init) {
+        console.log("here")
+        const response = await request(storeSecret, get(this.init, "data.data.reference"), "verify");
+        this.verfied = response;
+      } else {
+        console.log("here")
+        const response = await request(storeSecret, reference, "verify");
+        this.verfied = response;
+      }
       return this;
     } 
   }

@@ -21,49 +21,60 @@ _axios2.default.defaults.baseURL = "https://api.paystack.co/";
 _axios2.default.defaults.headers.post["Content-Type"] = "application/json";
 
 exports.default = function () {
-  var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(secret, objectPackage) {
-    var response;
+  var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(secret, objectPackage, state) {
+    var requestPayload, response;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.prev = 0;
-            _context.next = 3;
-            return (0, _axios2.default)({
-              method: "post",
-              url: "transaction/initialize",
+            requestPayload = {
               headers: {
                 "Authorization": secret
-              },
-              data: {
-                "reference": _shortid2.default.generate(),
-                "amount": objectPackage.amount,
-                "email": objectPackage.email
               }
-            });
+            };
 
-          case 3:
+            if (state === "initialize") {
+              requestPayload = Object.assign(requestPayload, {
+                method: "post",
+                url: "trasaction/initialize",
+                data: {
+                  "reference": _shortid2.default.generate(),
+                  "amount": objectPackage.amount,
+                  "email": objectPackage.email
+                }
+              });
+            } else if (state === "verify") {
+              requestPayload = Object.assign(requestPayload, {
+                method: "get",
+                url: "trasaction/verify/" + objectPackage.reference
+              });
+            }
+            _context.prev = 2;
+
+            console.log(requestPayload);
+            _context.next = 6;
+            return (0, _axios2.default)(requestPayload);
+
+          case 6:
             response = _context.sent;
-
-            console.log(response, "-------");
             return _context.abrupt("return", response);
 
-          case 8:
-            _context.prev = 8;
-            _context.t0 = _context["catch"](0);
+          case 10:
+            _context.prev = 10;
+            _context.t0 = _context["catch"](2);
 
             // throw error;
             console.log(_context.t0, "eriririr");
 
-          case 11:
+          case 13:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, this, [[0, 8]]);
+    }, _callee, this, [[2, 10]]);
   }));
 
-  function makeRequests(_x, _x2) {
+  function makeRequests(_x, _x2, _x3) {
     return _ref.apply(this, arguments);
   }
 
