@@ -9,8 +9,8 @@ function Paystack(key) {
 
 Paystack.prototype.transaction = function(first_argument) {
   return {
-    initalize: async function(initArgs) {
-      const response = await request(initArgs);
+    initialize: async function(initArgs) {
+      const response = await request(storeSecret, initArgs);
       console.log(response);
       this.init = true;
       return this;

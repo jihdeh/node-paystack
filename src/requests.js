@@ -5,11 +5,11 @@ axios.defaults.baseURL = "https://api.paystack.co/";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 
-export default async function makeRequests(objectPackage) {
+export default async function makeRequests(secret, objectPackage) {
   try {
     const response = await axios.post(`${objectPackage.nodeUrl}`, {
       headers: {
-        "Authorization": objectPackage.secret
+        "Authorization": secret
       },
       data: {
         "reference": shortid.generate(),
