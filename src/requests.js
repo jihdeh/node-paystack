@@ -6,9 +6,6 @@ axios.defaults.headers.post["Content-Type"] = "application/json";
 
 
 export default async function makeRequests(secret, objectPackage, state) {
-  if (state === "initialize") {
-
-  }
   try {
     if (state === "initialize") {
       const response = await axios({
@@ -23,7 +20,6 @@ export default async function makeRequests(secret, objectPackage, state) {
           "email": objectPackage.email
         }
       });
-      console.log(response, "-------")
       return response;
     } else if (state === "verify") {
         const response = await axios({
@@ -33,7 +29,6 @@ export default async function makeRequests(secret, objectPackage, state) {
           "Authorization": secret
         }
       });
-      console.log(response, "---verify----")
       return response;
     }
   } catch (error) {

@@ -9,20 +9,19 @@ function Paystack(key) {
 
 Paystack.prototype.transaction = function(first_argument) {
   return {
-    initialize: async function(initArgs) {
-      const response = await request(storeSecret, initArgs, "initialize");
+    initialize: function(initArgs) {
+      const response = request(storeSecret, initArgs, "initialize");
       this.init = response.data;
       return this;
     },
     
-    verify: async function(reference) {
+    verify: function(reference) {
       if(this.init) {
-        console.log("here")
-        const response = await request(storeSecret, get(this.init, "data.data.reference"), "verify");
+        const response = request(storeSecret, get(this.init, "data.data.reference"), "verify");
         this.verfied = response;
       } else {
         console.log("here")
-        const response = await request(storeSecret, reference, "verify");
+        const response = request(storeSecret, reference, "verify");
         this.verfied = response;
       }
       return this;
