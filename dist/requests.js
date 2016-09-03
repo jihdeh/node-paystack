@@ -21,7 +21,7 @@ _axios2.default.defaults.baseURL = "https://api.paystack.co/";
 _axios2.default.defaults.headers.post["Content-Type"] = "application/json";
 
 exports.default = function () {
-  var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(objectPackage) {
+  var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(secret, objectPackage) {
     var response;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
@@ -31,7 +31,7 @@ exports.default = function () {
             _context.next = 3;
             return _axios2.default.post("" + objectPackage.nodeUrl, {
               headers: {
-                "Authorization": objectPackage.secret
+                "Authorization": secret
               },
               data: {
                 "reference": _shortid2.default.generate(),
@@ -59,7 +59,7 @@ exports.default = function () {
     }, _callee, this, [[0, 7]]);
   }));
 
-  function makeRequests(_x) {
+  function makeRequests(_x, _x2) {
     return _ref.apply(this, arguments);
   }
 
