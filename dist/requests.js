@@ -29,7 +29,9 @@ exports.default = function () {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return _axios2.default.post("" + objectPackage.nodeUrl, {
+            return _axios2.default.post({
+              url: "/transaction/initialize",
+              method: "post",
               headers: {
                 "Authorization": secret
               },
