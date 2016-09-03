@@ -28,9 +28,11 @@ exports.default = function () {
         switch (_context.prev = _context.next) {
           case 0:
             _context.prev = 0;
-            _context.next = 3;
+
+            console.log(secret);
+            _context.next = 4;
             return _axios2.default.post({
-              url: "/transaction/initialize",
+              url: "transaction/initialize",
               method: "post",
               headers: {
                 "Authorization": secret
@@ -42,23 +44,23 @@ exports.default = function () {
               }
             });
 
-          case 3:
+          case 4:
             response = _context.sent;
             return _context.abrupt("return", response);
 
-          case 7:
-            _context.prev = 7;
+          case 8:
+            _context.prev = 8;
             _context.t0 = _context["catch"](0);
 
             // throw error;
             console.log(_context.t0);
 
-          case 10:
+          case 11:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, this, [[0, 7]]);
+    }, _callee, this, [[0, 8]]);
   }));
 
   function makeRequests(_x, _x2) {

@@ -7,8 +7,9 @@ axios.defaults.headers.post["Content-Type"] = "application/json";
 
 export default async function makeRequests(secret, objectPackage) {
   try {
+    console.log(secret)
     const response = await axios.post({
-      url: "/transaction/initialize",
+      url: "transaction/initialize",
       method: "post",
       headers: {
         "Authorization": secret

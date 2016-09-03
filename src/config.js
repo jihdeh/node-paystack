@@ -1,7 +1,6 @@
 import request from "./requests";
 let storeSecret;
 function Paystack(key) {
-  console.log(key);
   storeSecret = key;
   return this;
   
