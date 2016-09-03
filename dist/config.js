@@ -27,13 +27,13 @@ Paystack.prototype.transaction = function (first_argument) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                console.log(initArgs, "£££££££");
+                _context.next = 3;
                 return (0, _requests2.default)(storeSecret, initArgs);
 
-              case 2:
+              case 3:
                 response = _context.sent;
 
-                console.log(response);
                 this.init = true;
                 return _context.abrupt("return", this);
 
@@ -53,7 +53,6 @@ Paystack.prototype.transaction = function (first_argument) {
     }(),
 
     verify: function verify() {
-      console.log(storeSecret);
       this.verfied = "no";
       return this;
     }

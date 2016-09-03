@@ -4,7 +4,7 @@
   "description": "A simple nodejs api wrapper",
   "main": "index.js",
   "scripts": {
-    "prepublish": "babel --plugins 'babel-plugin-transform-decorators-legacy' src --ignore __tests__ --out-dir ./dist",
+    "build": "babel --plugins 'babel-plugin-transform-decorators-legacy' src --ignore __tests__ --out-dir ./dist",
     "dev": "babel --plugins 'babel-plugin-transform-decorators-legacy' src --ignore __tests__ --out-dir ./dist",
     "lint": "eslint ./src",
     "serve": "",
@@ -14,7 +14,7 @@
     "test-watch": "npm run testonly -- --watch --watch-extensions js"
   },
   "pre-push": [
-    "prepublish"
+    "build"
   ],
   "options": {
     "mocha": "--require scripts/mocha_runner src/**/__tests__/**/*.js"
@@ -56,6 +56,7 @@
     "axios": "^0.14.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-runtime": "^6.9.2",
+    "jsdom": "^9.4.5",
     "shortid": "^2.2.6"
   }
 }

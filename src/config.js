@@ -9,14 +9,13 @@ function Paystack(key) {
 Paystack.prototype.transaction = function(first_argument) {
   return {
     initialize: async function(initArgs) {
+      console.log(initArgs, "£££££££");
       const response = await request(storeSecret, initArgs);
-      console.log(response);
       this.init = true;
       return this;
     },
     
     verify: function() {
-      console.log(storeSecret);
       this.verfied = "no";
       return this;
     } 

@@ -7,10 +7,9 @@ axios.defaults.headers.post["Content-Type"] = "application/json";
 
 export default async function makeRequests(secret, objectPackage) {
   try {
-    console.log(secret)
-    const response = await axios.post({
-      url: "transaction/initialize",
+    const response = await axios({
       method: "post",
+      url: "transaction/initialize",
       headers: {
         "Authorization": secret
       },
@@ -20,9 +19,10 @@ export default async function makeRequests(secret, objectPackage) {
         "email": objectPackage.email
       }
     });
+    console.log(response, "-------")
     return response;
   } catch (error) {
     // throw error;
-    console.log(error);
+    console.log(error, "eriririr");
   }
 }
