@@ -1,5 +1,5 @@
 import request from "./requests";
-import {get } from "lodash";
+import {get} from "lodash";
 let storeSecret;
 
 function Paystack(key) {
